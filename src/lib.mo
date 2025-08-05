@@ -7,6 +7,9 @@ import Result "mo:base/Result";
 import Blob "mo:base/Blob";
 
 module {
+	/// https://core.telegram.org/bots/api#formatting-options
+	///
+	/// Default: `#Plain`
 	public type Formatting = {
 		#Plain;
 		#Markdown;
@@ -17,9 +20,13 @@ module {
 	/// https://core.telegram.org/bots/api#linkpreviewoptions
 	///
 	/// `is_disabled`: True, if the link preview is disabled
+	///
 	/// `url`: URL to use for the link preview. If empty, then the first URL found in the message text will be used
+	///
 	/// `prefer_small_media`: True, if the media in the link preview is supposed to be shrunk; ignored if the URL isn't explicitly specified or media size change isn't supported for the preview
+	///
 	/// `prefer_large_media`: True, if the media in the link preview is supposed to be enlarged; ignored if the URL isn't explicitly specified or media size change isn't supported for the preview
+	///
 	/// `show_above_text`: True, if the link preview must be shown above the message text; otherwise
 	public type LinkPreviewOptions = {
 		is_disabled : Bool;
@@ -30,7 +37,9 @@ module {
 	};
 
 	/// `parse_mode`: Mode for parsing entities in the message text (default: `#MarkdownV2`)
+	///
 	/// `link_preview_options`: Link preview generation options for the message (default: `null`)
+	///
 	/// `disable_notification`: Sends the message silently. Users will receive a notification with no sound. (default: `null`)
 	public type SendMessageOptions = {
 		parse_mode : ?Formatting;
@@ -44,6 +53,14 @@ module {
 		};
 
 		/// Send a message to the chat
+		///
+		/// `chat_id`: Unique identifier for the target chat(e.g. `1234567890`) or username of the target channel(e.g. `@channel_username`)
+		///
+		/// `text`: Text of the message to be sent
+		///
+		/// `options`: Options for the message
+		///
+		/// https://core.telegram.org/bots/api#sendmessage
 		public func sendMessage(chat_id : Text, text : Text, options : ?SendMessageOptions) : async Result.Result<(), Text> {
 			let defaultOptions : SendMessageOptions = {
 				parse_mode = null;
@@ -157,6 +174,7 @@ module {
 		_escapeChars("<>&", text);
 	};
 
+	/// Transform the request
 	public func transformRequest(arg : IC.TransformArg) : IC.HttpRequestResult {
 		{
 			status = arg.response.status;
