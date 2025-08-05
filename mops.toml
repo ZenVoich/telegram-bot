@@ -1,0 +1,17 @@
+[package]
+name = "telegram-bot"
+version = "0.1.0"
+description = "Telegram Bot API for Motoko"
+repository = "https://github.com/ZenVoich/telegram-bot"
+keywords = [ "telegram", "bot", "tg", "api", "http", "interface" ]
+license = "MIT"
+
+[dependencies]
+ic = "3.2.0"
+serde = "3.3.2"
+
+[toolchain]
+moc = "0.15.1"
+
+[dev-dependencies]
+test = "2.1.1"
