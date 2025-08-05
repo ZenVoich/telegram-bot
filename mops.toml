@@ -1,6 +1,6 @@
 [package]
 name = "telegram-bot"
-version = "0.1.0"
+version = "0.1.1"
 description = "Telegram Bot API for Motoko"
 repository = "https://github.com/ZenVoich/telegram-bot"
 keywords = [ "telegram", "bot", "tg", "api", "http", "interface" ]
